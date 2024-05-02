@@ -1,1 +1,1 @@
-# testOpenTims
+# Testing OpenTims
