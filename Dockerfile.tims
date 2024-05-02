@@ -1,0 +1,15 @@
+FROM quay.io/jupyter/scipy-notebook:python-3.11.9
+
+USER root
+
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    python3.11-dev
+
+USER ${NB_UID}
+
+# Install from the requirements.txt file
+COPY --chown=${NB_UID}:${NB_GID} requirements.txt /tmp/
+RUN pip install --no-cache-dir --requirement /tmp/requirements.txt && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
