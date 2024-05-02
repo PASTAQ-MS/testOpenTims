@@ -1,0 +1,3 @@
+opentimspy
+opentims_bruker_bridge
+numpy
